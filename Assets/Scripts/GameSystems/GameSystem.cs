@@ -20,6 +20,8 @@ public class GameSystem : MonoBehaviour
                 return system as Maleghast;
             case "Generic System":
                 return system as Generic;
+            case "Lancer":
+                return system as Lancer.LancerSystem;
         }
         return null;
     }
@@ -171,7 +173,7 @@ public class GameSystem : MonoBehaviour
 
     public virtual void CreateToken()
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException("Override me");
     }
 
     public virtual void UpdateData(TokenData data)
@@ -224,6 +226,12 @@ public class GameSystem : MonoBehaviour
                 break;
             case "Maleghast":
                 system = g.AddComponent<Maleghast>();
+                break;
+            case "Lancer":
+                system = g.AddComponent<Lancer.LancerSystem>();
+                break;
+            default:
+                Debug.LogError($"System {value} not implemented yet!");
                 break;
         }
         Toast.AddSimple(system.SystemName() + " initialized.");

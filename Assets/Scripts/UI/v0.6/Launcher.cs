@@ -206,7 +206,7 @@ public class Launcher : MonoBehaviour
         if (_connectMode == "solo" || _connectMode == "host")
         {
             string system = Preferences.Current.System;
-            Modal.AddDropdownField("GameSystem", "Game System", system, new string[] { "Generic", "ICON 1.5", "Maleghast"/*, "Lancer"*/}, (evt) =>
+            Modal.AddDropdownField("GameSystem", "Game System", system, new string[] { "Generic", "ICON 1.5", "Maleghast", "Lancer"}, (evt) =>
             {
                 Preferences.SetSystem(evt.newValue);
                 ConfigModalEvaluateConditions();
@@ -288,8 +288,6 @@ public class Launcher : MonoBehaviour
             case "ICON 1.5":
             case "Maleghast":
                 return "Square";
-            case "Lancer":
-                return "Hex";
             default:
                 return Preferences.Current.Grid;
         }
